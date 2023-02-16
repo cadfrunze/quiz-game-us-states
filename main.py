@@ -19,10 +19,8 @@ while len(list_temp) < len_state:
     find_data = data_file[data_file.state == answer]
     state = find_data.state.to_list()
     if answer == 'Exit':
-        new_list = data_file.state.to_list()
-        for element in list_temp:
-            if element in data_file.state.to_list():
-                new_list.remove(element)
+        check_list = data_file.state.to_list()
+        new_list = [elem for elem in check_list if elem not in list_temp]
         data_dict = {}
         data_dict['state'] = new_list
         new_data = pandas.DataFrame(data_dict)
